@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/styleGlobal.css">
+    <link rel="stylesheet" href="CSS/book.css">
+    <title>Books</title>
+</head>
+
+<body>
+    <div class="container">
+        <u><h1>Library > <span>Books</span></h1></u>
+        <section>
+            <header>
+                <nav>
+                    <button style=" background-color: grey;
+                    opacity: 0.7;
+                    border-bottom: 3px solid blue;" onclick="location.href='index.html'">
+                    Books
+                </button>
+                    <button onclick="location.href='visitors.html'">Visitors</button>
+                    <button onclick="location.href='cards.html'">Cards</button>
+                    <button onclick="location.href='statistic.html'">Statistics</button>
+                </nav>
+            </header>
+        </section>
+
+        <div class="options">
+            <button onclick="addForm(event)">Add Books</button>
+            <button onclick="editForm(event)">Edit Books</button>
+        </div>
+        <section class="popUp">
+            <div id="myForm">
+                <form action="get" class="addBook">
+                    <h2 id="formTitle">Add Book:</h2>
+                    <div class="inputs">
+                        <p>Book title:</p>
+                        <input id="title" type="text" placeholder="Input book title" required>
+
+                        <p>Author name:</p>
+                        <input id="authorName" type="text" placeholder="Input author name" required>
+
+                        <p>Publish date:</p>
+                        <input id="pubDate" type="date" placeholder="Input publish date" required>
+
+                        <p>Publisher:</p>
+                        <input id="publisher" type="text" placeholder="Input publisher" required>
+
+                        <p>Number of Pages:</p>
+                        <input id="noPage" type="number" placeholder="Input number of pages" required>
+
+                        <p>Copies in stock:</p>
+                        <input id="copies" type="number" placeholder="Input number of copies" required>
+                    </div>
+                    <button style=" background-color: grey;
+                    opacity: 0.7;
+                    border-bottom: 3px solid blue;" type="submit">Add</button>
+                    <button style=" background-color: grey;
+                    opacity: 0.7;
+                    border-bottom: 3px solid red;" onclick="closeForm(event)">Close</button>
+                </form>
+            </div>
+        </section>
+        <section>
+            <footer>
+                <h3>Book list:</h3>
+            </footer>
+        </section>
+    </div>
+    <script type="module" src="JS/main.js"></script>
+    <script src="js/bookControl.js"></script>
+</body>
+
+</html>
