@@ -33,12 +33,14 @@
             <h3>All Books</h3>
             <div class="downB">
                 <button class="addForm" onClick="addForm(event)"><i class="fa fa-plus"></i> Add Books</button>
-                <button class="addForm" onClick=""><i class="fa fa-download"></i> Download book list</button>
+                <button class="addForm" onClick="download()"><i class="fa fa-download"></i> 
+                    <a id="downloadCSV"> Download book list</a>
+                </button>
                 <button class="addForm" onClick="clearStorage(event)"><i class="fa fa-trash"></i> Clear book list</button>
             </div>
         </div>
+        <hr/>
         <section class="popUp">
-            <hr/>
             <div id="myForm">
                 <form class="addBook">
                     <h2 id="formTitle">Add Book:</h2>
@@ -64,12 +66,10 @@
                         <p>Copies in stock:</p>
                         <input id="copies" type="number" placeholder="Input number of copies" required>
                     </div>
+                    <button style=" background-color: yellowgreen;
+                    opacity: 0.7; " onclick="addBook(event)" type="submit" id="add">Add</button>
                     <button style=" background-color: grey;
-                    opacity: 0.7;
-                    border-bottom: 3px solid blue;" onclick="addBook(event)" type="submit" id="add">Add</button>
-                    <button style=" background-color: grey;
-                    opacity: 0.7;
-                    border-bottom: 3px solid red;" onclick="closeForm(event)">Close</button>
+                    opacity: 0.7;" onclick="closeForm(event)">Close</button>
                 </form>
             </div>
         </section>
@@ -84,12 +84,13 @@
                     <option value="Publisher">Publisher</option>
                     <option value="InStock">Stock</option>
                 </select>
-                <button class="addForm" onclick="sortBy(sort.value)">Sort</button>
+                <button class="addForm" onclick="sortBy(sort.value)"><i class="fa fa-sort"></i> Sort</button>
             </div>
             <div>
                 <label>Search: </label>
-                <input id="searchInput" type="search" placeholder="Search Title">
-                <button class="addForm">Search</button>
+                <input id="searchInput" type="search" placeholder="Search something">
+                <button class="addForm" onclick="searchBook(searchInput.value)"><i class="fa fa-search"></i></button>
+                <button class="addForm" id="refreshTable"><i class="fa fa-undo"></i></button>
             </div>
         </section>
 

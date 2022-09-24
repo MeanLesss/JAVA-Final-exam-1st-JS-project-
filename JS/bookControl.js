@@ -161,6 +161,42 @@ function sortBy(sBy) {
     console.log(sortedArr);
 }
 
+function searchBook(text) {
+    let foundArr = [];
+    stock.forEach(book => {
+        if (book.ID.includes(text)) {
+            foundArr.push(book);
+        }
+        if (book.title.toLowerCase().includes(text.toLowerCase())) {
+            foundArr.push(book);
+        }
+        if (book.authorName.toLowerCase().includes(text.toLowerCase())) {
+            foundArr.push(book);
+        }
+        if (book.publisher.toLowerCase().includes(text.toLowerCase())) {
+            foundArr.push(book);
+        }
+    });
+    if (foundArr.length <= 0) {
+        alert('Search not found!')
+        return;
+    }
+    const unique = [...new Map(foundArr.map((m) => [m.ID, m])).values()];
+    loadTable(unique);
+}
 
-console.log(stock)
+function download() {
+    if (confirm('Do you want to download "Book list.json" ?')) {
+        var ary = localStorage.getItem("stock");
+        var blob = new Blob([ary], { type: "json" });
+        var url = URL.createObjectURL(blob);
+        var a = document.querySelector("#downloadCSV"); // id of the <a> element to render the download link
+        a.href = url;
+        a.download = "Book list.json";
+    }
+}
+
+refreshTable.onclick = () => { loadTable(stock) };
+
+// console.log(stock)
 loadTable(stock);

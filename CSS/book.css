@@ -4,6 +4,7 @@
     /* justify-content: space-between; */
     align-items: center;
     padding: 0 10px;
+    margin-top: 10px;
 }
 
 .downB {
@@ -16,6 +17,10 @@
 
 .addForm {
     margin: 5px 0;
+}
+
+#refreshTable {
+    width: 40px;
 }
 
 .popUp {
@@ -33,18 +38,23 @@
     width: 30%;
     height: auto;
     display: none;
-    top: 10%;
+    top: 5%;
     position: fixed;
-    border: 3px solid whitesmoke;
+    border: 1px solid yellowgreen;
     border-radius: 20px;
     z-index: 9;
-    background-color: yellowgreen;
+    background-color: #181a1b;
     display: none;
+    box-shadow: 0px 50px 1000px yellowgreen;
+}
+
+#myForm h2 {
+    color: yellowgreen;
 }
 
 .addBook {
     width: 100%;
-    height: 100%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,7 +62,7 @@
 }
 
 .inputs {
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,10 +70,11 @@
 }
 
 .inputs input {
+    margin: 10px 0;
     color: black;
-    background-color: white;
+    background-color: #777;
     opacity: 0.7;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 96%;
     padding: 5px;
 }
@@ -102,8 +113,9 @@ tbody tr th button u {
 
 hr {
     border: .5px solid yellowgreen;
-    width: 96%;
+    width: 100%;
     margin: 20px 0;
+    box-shadow: 0px 0px 10px 1px greenyellow;
 }
 
 .filter {
@@ -133,4 +145,30 @@ hr {
     color: white;
     border-radius: 10px;
     border: .5px solid white;
+}
+
+@media only screen and (max-width: 700px) {
+    #myForm {
+        width: 50%;
+        height: 80%;
+        height: 60%;
+        overflow: auto;
+    }
+    .addBook {
+        /* width: 70%; */
+        height: auto;
+    }
+}
+
+@media only screen and (min-width: 850px) {
+    #myForm {
+        width: 50%;
+        height: 80%;
+        overflow: auto;
+    }
+    .addBook {
+        width: 100%;
+        height: auto;
+        overflow: auto;
+    }
 }
