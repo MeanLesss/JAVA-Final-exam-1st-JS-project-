@@ -79,10 +79,15 @@ table {
     width: 100%;
 }
 
+thead tr th {
+    border: 1px solid green;
+}
+
 tbody tr th {
     font-style: normal;
-    border-top: 1px dashed yellow;
-    border-bottom: 1px dashed yellow;
+    border-right: 1px dashed yellowgreen;
+    border-top: 1px dashed yellowgreen;
+    border-bottom: 1px dashed yellowgreen;
 }
 
 tbody tr th button {

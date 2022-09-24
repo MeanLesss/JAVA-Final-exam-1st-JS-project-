@@ -137,20 +137,28 @@ function closeForm(e) {
 }
 
 function sortBy(sBy) {
-    let sortedArr = [];
+    let sortedArr = stock;
     switch (sBy.toLowerCase()) {
         case 'id':
-            stock.sort(([, a], [, b]) => {
-                return a[1] - b[1];
+            sortedArr.sort(function(a, b) {
+                return a.ID - b.ID;
             })
             break;
         case 'title':
+            sortedArr.sort((a, b) => a.title.localeCompare(b.title));
             break;
         case 'authorname':
+            sortedArr.sort((a, b) => a.authorName.localeCompare(b.authorName));
+            break;
+        case 'publisher':
+            sortedArr.sort((a, b) => a.publisher.localeCompare(b.publisher));
+            break;
+        case 'instock':
+            sortedArr.sort((a, b) => a.copiesInLib - b.copiesInLib);
             break;
     }
-    loadTable(stock);
-    console.log(stock);
+    loadTable(sortedArr);
+    console.log(sortedArr);
 }
 
 
