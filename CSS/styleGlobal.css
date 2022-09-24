@@ -4,30 +4,6 @@
     color: white;
 }
 
-h1 {
-    padding: 20px;
-    color: yellowgreen;
-    background-color: rgba(164, 210, 70, 0.3)
-}
-
-button {
-    background-color: transparent;
-    padding: 10px;
-    margin: 0;
-    box-shadow: 0;
-    border: 0;
-}
-
-button:hover {
-    background-color: grey;
-    opacity: 0.7;
-    border-bottom: 3px solid blue;
-}
-
-nav {
-    background-color: yellowgreen;
-}
-
 body {
     width: 100vw;
     height: 100vh;
@@ -37,6 +13,38 @@ body {
     align-items: center;
     border: 1px solid green;
     background-color: #181a1b;
+}
+
+h1 {
+    padding: 20px;
+    color: yellowgreen;
+    background-color: rgba(164, 210, 70, 0.3)
+}
+
+header nav {
+    background-color: Black;
+}
+
+header nav button {
+    border-radius: 0;
+    border: 0;
+    /* border-right: 1px solid white; */
+}
+
+button {
+    background-color: transparent;
+    padding: 10px;
+    margin: 3px 3px;
+    box-shadow: 0;
+    border: 1px solid yellowgreen;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: grey;
+    opacity: 0.7;
+    border-bottom: 3px solid green;
 }
 
 .container {

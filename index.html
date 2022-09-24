@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/styleGlobal.css">
     <link rel="stylesheet" href="CSS/book.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Books</title>
 </head>
 
@@ -16,9 +17,9 @@
         <section>
             <header>
                 <nav>
-                    <button style=" background-color: grey;
+                    <button style="background-color: grey;
                     opacity: 0.7;
-                    border-bottom: 3px solid blue;" onclick="location.href='index.html'">
+                    border-bottom: 3px solid green;" onclick="location.href='index.html'">
                     Books
                 </button>
                     <button onclick="location.href='visitors.html'">Visitors</button>
@@ -29,14 +30,22 @@
         </section>
 
         <div class="options">
-            <button onclick="addForm(event)">Add Books</button>
-            <button onclick="editForm(event)">Edit Books</button>
+            <h3>All Books</h3>
+            <div class="downB">
+                <button class="addForm" onClick="addForm(event)"><i class="fa fa-plus"></i> Add Books</button>
+                <button class="addForm" onClick=""><i class="fa fa-download"></i> Download book list</button>
+                <button class="addForm" onClick="clearStorage(event)"><i class="fa fa-trash"></i> Clear book list</button>
+            </div>
         </div>
         <section class="popUp">
+            <hr/>
             <div id="myForm">
-                <form action="get" class="addBook">
+                <form class="addBook">
                     <h2 id="formTitle">Add Book:</h2>
                     <div class="inputs">
+                        <p>Book ID:</p>
+                        <input id="ID" type="number" placeholder="Input book ID" required>
+
                         <p>Book title:</p>
                         <input id="title" type="text" placeholder="Input book title" required>
 
@@ -44,7 +53,7 @@
                         <input id="authorName" type="text" placeholder="Input author name" required>
 
                         <p>Publish date:</p>
-                        <input id="pubDate" type="date" placeholder="Input publish date" required>
+                        <input id="pubDate" type="date" placeholder="Input publish date">
 
                         <p>Publisher:</p>
                         <input id="publisher" type="text" placeholder="Input publisher" required>
@@ -57,21 +66,57 @@
                     </div>
                     <button style=" background-color: grey;
                     opacity: 0.7;
-                    border-bottom: 3px solid blue;" type="submit">Add</button>
+                    border-bottom: 3px solid blue;" onclick="addBook(event)" type="submit" id="add">Add</button>
                     <button style=" background-color: grey;
                     opacity: 0.7;
                     border-bottom: 3px solid red;" onclick="closeForm(event)">Close</button>
                 </form>
             </div>
         </section>
-        <section>
-            <footer>
-                <h3>Book list:</h3>
-            </footer>
+
+        <section class="filter">
+            <div>
+                <label>Sort by: </label>
+                <select id="sort">
+                    <option value="ID">ID</option>
+                    <option value="Title">Title</option>
+                    <option value="authorName">Author name</option>
+                </select>
+                <button class="addForm" onclick="sortBy(sort.value)">Sort</button>
+            </div>
+            <div>
+                <label>Search: </label>
+                <input id="searchInput" type="search" placeholder="Search Title">
+                <button class="addForm">Search</button>
+            </div>
+        </section>
+
+        <section class="dispTable">
+            <div class="list">
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Author name</th>
+                            <th>Publishing date</th>
+                            <th>Publisher</th>
+                            <th>Pages</th>
+                            <th>In stock</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ttbody">
+
+                    </tbody>
+                </table>
+            </div>
         </section>
     </div>
+    <script src="JS/Model.js/Book.js"></script>
     <script type="module" src="JS/main.js"></script>
-    <script src="js/bookControl.js"></script>
+    <!-- <script data-main="JS/bookControl.js" src="JS/require.js"></script> -->
+    <script src="JS/bookControl.js"></script>
 </body>
 
 </html>
