@@ -2,8 +2,12 @@
     margin: 0;
     padding: 0;
     color: white;
-    font-family: "Consolas", "Menlo", "Ubuntu Mono", monospace;
+    font-family: "Menlo", "Ubuntu Mono", monospace, "Consolas";
     /* overflow: auto; ,*/
+}
+
+input {
+    color: white;
 }
 
 body {
