@@ -61,19 +61,6 @@ button:hover {
     }
 }
 
-@media only screen and (max-width: 700px) {
-    /* #myForm {
-        width: 50%;
-        height: 80%;
-        height: 60%;
-        overflow: auto;
-    }
-    .addBook {
-        width: 70%;
-    height: auto;
-    */
-}
-
 @media only screen and (min-width: 850px) {
     /* #myForm {
         width: 50%;

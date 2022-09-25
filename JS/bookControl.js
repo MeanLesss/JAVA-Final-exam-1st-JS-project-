@@ -7,7 +7,7 @@ let jStock = localStorage.getItem("stock");
 stock = JSON.parse(jStock);
 
 function addBook(e) {
-    //e.preventDefault();
+    e.preventDefault();
     let book = new Book();
     if (add.innerHTML === 'Add') {
         book = new Book(

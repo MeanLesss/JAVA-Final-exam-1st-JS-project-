@@ -9,7 +9,8 @@ class Book {
         this.noPages = noPages;
         this.copiesInLib = copiesInLib;
     }
-} // references
+}
+// references
 // an object
 // const John = {
 //     name: "John Doe",
