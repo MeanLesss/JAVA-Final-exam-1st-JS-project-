@@ -1,10 +1,6 @@
-// let stock = [
-//     // new Book(101, 'Book hello', 'Stan Lee', '23/10/2002', 'Marvel', 100, 80)
-// ]
-
 let stock = [];
 let jStock = localStorage.getItem("stock");
-stock = JSON.parse(jStock);
+if (jStock != null) stock = JSON.parse(jStock);
 
 function addBook(e) {
     e.preventDefault();
@@ -40,10 +36,9 @@ function addBook(e) {
 }
 
 function clearStorage(e) {
-    localStorage.clear();
-    stock = [];
+    localStorage.removeItem('stock');
     e.preventDefault();
-    loadTable();
+    location.reload();
 }
 
 function addForm(e) {

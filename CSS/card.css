@@ -1,0 +1,180 @@
+.options {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    align-items: center;
+    padding: 0 10px;
+    margin-top: 10px;
+}
+
+.downB {
+    margin-left: auto;
+}
+
+.dispTable {
+    padding: 0 10px;
+}
+
+.addForm {
+    margin: 5px 0;
+}
+
+#refreshTable {
+    width: 40px;
+}
+
+.popUp {
+    width: 100%;
+    /* height: 100%; */
+    /* height: auto; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#myForm {
+    padding: 10px;
+    width: 20%;
+    height: 30%;
+    display: none;
+    top: 5%;
+    position: fixed;
+    border: 1px solid yellowgreen;
+    border-radius: 20px;
+    z-index: 9;
+    background-color: #181a1b;
+    display: none;
+    box-shadow: 0px 50px 1000px yellowgreen;
+}
+
+#myForm h2 {
+    color: yellowgreen;
+}
+
+.addBook {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputs {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.inputs input {
+    margin: 10px 0;
+    background-color: #777;
+    opacity: 0.7;
+    border-radius: 10px;
+    width: 96%;
+    padding: 5px;
+}
+
+.inputs select {
+    margin: 10px 0;
+    background-color: #777;
+    opacity: 0.7;
+    border-radius: 10px;
+    width: 100%;
+    padding: 5px;
+}
+
+.addBook button {
+    width: 80%;
+    height: auto;
+    margin-top: 10px;
+}
+
+table {
+    /* border: 1px solid yellowgreen; */
+    width: 100%;
+}
+
+thead tr th {
+    border: 3px solid green;
+    padding: 10px 0px;
+}
+
+tbody tr th {
+    font-style: normal;
+    border: 1px dashed yellowgreen;
+}
+
+tbody tr th button {
+    border: 0;
+}
+
+tbody tr th button u {
+    color: yellowgreen;
+    height: auto;
+    cursor: pointer;
+}
+
+hr {
+    border: .5px solid yellowgreen;
+    width: 100%;
+    margin: 20px 0;
+    box-shadow: 0px 0px 10px 1px greenyellow;
+}
+
+.filter {
+    margin-bottom: 20px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.filter select {
+    width: 200px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}
+
+.filter button {
+    width: 70px;
+}
+
+.filter input {
+    width: 200px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    border: .5px solid white;
+}
+
+@media only screen and (max-width: 700px) {
+    #myForm {
+        width: 50%;
+        height: 50%;
+        overflow: auto;
+    }
+    .addBook {
+        /* width: 70%; */
+        height: auto;
+    }
+}
+
+@media only screen and (min-width: 850px) {
+    #myForm {
+        width: 30%;
+        height: auto;
+        overflow: auto;
+    }
+    .addBook {
+        width: 100%;
+        height: auto;
+        overflow: auto;
+    }
+}

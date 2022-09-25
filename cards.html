@@ -7,12 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/styleGlobal.css">
+    <link rel="stylesheet" href="css/card.css">
+    <link rel="icon" href="logo.png">
     <title>Cards</title>
 </head>
 
 <body>
     <div class="container">
-        <u><h1 onclick="location.href='index.html'">Library  > <span>Cards</span></h1></u>
+        <u><h1 onclick="location.href='index.html'"><img src="logo.png" alt="Logo">Library  > <span>Cards</span></h1></u>
         <section>
             <header>
                 <nav>
@@ -28,8 +30,79 @@
                 </nav>
             </header>
         </section>
+        <div class="options">
+            <h3>All Cards</h3>
+            <div class="downB">
+                <button class="addForm" onClick="addForm(event)"><i class="fa fa-plus"></i> Add Card</button>
+                <button class="addForm" onClick="download()"><i class="fa fa-download"></i> 
+                <a id="downloadCSV"> Download Card list</a>
+            </button>
+                <button class="addForm" onClick="clearStorage(event)"><i class="fa fa-trash"></i> Clear Card list</button>
+            </div>
+        </div>
+        <hr/>
+        <section class="popUp">
+            <div id="myForm">
+                <form class="addBook">
+                    <h2 id="formTitle">Add Card:</h2>
+                    <div class="inputs">
+                        <p>Card ID:</p>
+                        <input id="ID" type="number" placeholder="Input card ID" required>
+
+                        <p>Visitors:</p>
+                        <select id="selectVisitor" type="text" placeholder="Input fullname" required></select>
+
+                        <p>Books:</p>
+                        <select id="selectBook" type="tel" placeholder="Input phone number" required></select>
+                    </div>
+                    <button style=" background-color: yellowgreen;
+                opacity: 0.7; " onclick="addCard(event)" type="submit" id="add">Add</button>
+                    <button style=" background-color: grey;
+                opacity: 0.7;" onclick="closeForm(event)">Close</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="filter">
+            <div>
+                <label>Sort by: </label>
+                <select id="sort">
+                <option value="ID">ID</option>
+                <option value="Name">Name</option>
+                </select>
+                <button class="addForm" onclick="sortBy(sort.value)"><i class="fa fa-sort"></i> Sort</button>
+            </div>
+            <div>
+                <label>Search: </label>
+                <input id="searchInput" type="search" placeholder="Search something">
+                <button class="addForm" onclick="searchVisitor(searchInput.value)"><i class="fa fa-search"></i></button>
+                <button class="addForm" id="refreshTable"><i class="fa fa-undo"></i></button>
+            </div>
+        </section>
+
+        <section class="dispTable">
+            <div class="list">
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Visitor</th>
+                            <th>Book</th>
+                            <th>Borrow Date</th>
+                            <th>Return Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ttbody">
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </div>
-    <!-- <script type="module" src="JS/main.js"></script> -->
+    <script src="JS/Model.js/Visitor.js"></script>
+    <script src="JS/Model.js/Card.js"></script>
+    <script src="JS/Model.js/Book.js"></script>
+    <script src="JS/cardControl.js"></script>
 </body>
 
 </html>

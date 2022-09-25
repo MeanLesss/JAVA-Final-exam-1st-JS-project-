@@ -27,6 +27,14 @@ h1 {
     background-color: rgba(164, 210, 70, 0.3)
 }
 
+u h1 img {
+    filter: invert(99%) sepia(44%) saturate(2195%) hue-rotate(19deg) brightness(88%) contrast(86%);
+    border-radius: 50%;
+    box-shadow: 0px 0px 20px 1px hotpink;
+    width: 32px;
+    height: 32px;
+}
+
 header nav {
     background-color: Black;
 }

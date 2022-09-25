@@ -2,13 +2,14 @@ let visitors = [];
 let jVisitor = localStorage.getItem("visitors");
 if (jVisitor != null) visitors = JSON.parse(jVisitor);
 
-
 function addForm(e) {
     clearVisitorInput();
     myForm.style.display = "block";
     formTitle.innerHTML = "Add visitor"
     add.innerHTML = "Add";
-    ID.disabled = false;
+    ID.disabled = true;
+    if (visitors == null) ID.value = 1;
+    else ID.value = visitors.length + 1;
     e.preventDefault();
 }
 
@@ -80,7 +81,6 @@ function addVisitor(e) {
             ID.value,
             fullname.value,
             phoneNumber.value);
-        console.log(visitor);
         visitors.push(visitor);
     } else {
         visitor = visitors.find(b => b.ID == ID.value)
@@ -94,7 +94,7 @@ function addVisitor(e) {
     }
     localStorage.setItem('visitors', JSON.stringify(visitors));
     visitors = JSON.parse(localStorage.getItem("visitors"));
-    console.log(visitors)
+    console.log(visitors);
     loadTable(visitors);
     closeForm();
 }
@@ -145,6 +145,13 @@ function download() {
         a.href = url;
         a.download = "Visitor list.json";
     }
+}
+
+function clearStorage(e) {
+    localStorage.removeItem('visitors');
+    location.reload();
+    e.preventDefault();
+
 }
 refreshTable.onclick = () => { loadTable(visitors) }
 loadTable(visitors)
