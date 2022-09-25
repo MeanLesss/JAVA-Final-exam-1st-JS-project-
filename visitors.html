@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/styleGlobal.css">
+    <link rel="stylesheet" href="css/visitor.css">
     <title>visitors</title>
 </head>
 
@@ -18,7 +20,8 @@
                     <button onclick="location.href='index.html'">Books</button>
                     <button style="  background-color: grey;
                     opacity: 0.7;
-                    border-bottom: 3px solid green;" onclick="location.href='visitors.html'">
+                    border-bottom: 3px solid green;
+                    color:lime;" onclick="location.href='visitors.html'">
                     Visitors
                     </button>
                     <button onclick="location.href='cards.html'">Cards</button>
@@ -26,8 +29,77 @@
                 </nav>
             </header>
         </section>
+        <div class="options">
+            <h3>All Visitors</h3>
+            <div class="downB">
+                <button class="addForm" onClick="addForm(event)"><i class="fa fa-plus"></i> Add Visitor</button>
+                <button class="addForm" onClick="download()"><i class="fa fa-download"></i> 
+                <a id="downloadCSV"> Download Visitor list</a>
+            </button>
+                <button class="addForm" onClick="clearStorage(event)"><i class="fa fa-trash"></i> Clear Visitor list</button>
+            </div>
+        </div>
+        <hr/>
+        <section class="popUp">
+            <div id="myForm">
+                <form class="addBook">
+                    <h2 id="formTitle">Add Book:</h2>
+                    <div class="inputs">
+                        <p>Visitor ID:</p>
+                        <input id="ID" type="number" placeholder="Input visitor ID" required>
+
+                        <p>Fullname:</p>
+                        <input id="fullname" type="text" placeholder="Input fullname" required>
+
+                        <p>Phone number:</p>
+                        <input id="phoneNumber" type="tel" placeholder="Input phone number" required>
+                    </div>
+                    <button style=" background-color: yellowgreen;
+                opacity: 0.7; " onclick="addVisitor(event)" type="submit" id="add">Add</button>
+                    <button style=" background-color: grey;
+                opacity: 0.7;" onclick="closeForm(event)">Close</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="filter">
+            <div>
+                <label>Sort by: </label>
+                <select id="sort">
+                <option value="ID">ID</option>
+                <option value="Name">Name</option>
+            </select>
+                <button class="addForm" onclick="sortBy(sort.value)"><i class="fa fa-sort"></i> Sort</button>
+            </div>
+            <div>
+                <label>Search: </label>
+                <input id="searchInput" type="search" placeholder="Search something">
+                <button class="addForm" onclick="searchVisitor(searchInput.value)"><i class="fa fa-search"></i></button>
+                <button class="addForm" id="refreshTable"><i class="fa fa-undo"></i></button>
+            </div>
+        </section>
+
+        <section class="dispTable">
+            <div class="list">
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ttbody">
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </div>
-    <!-- <script type="module" src="JS/main.js"></script> -->
+    <!-- <script src="JS/Model.js/Book.js"></script> -->
+    <script src="JS/Model.js/Visitor.js"></script>
+    <script src="JS/visitorControl.js"></script>
 </body>
 
 </html>
