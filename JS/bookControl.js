@@ -123,12 +123,19 @@ function clearBookInput() {
     publisher.value = "";
     noPage.value = "";
     copies.value = "";
+    // ID.innerHTML = "";
+    // title.innerHTML = "";
+    // authorName.innerHTML = "";
+    // pubDate.innerHTML = "";
+    // publisher.innerHTML = "";
+    // noPage.innerHTML = "";
+    // copies.innerHTML = "";
 }
 
 function closeForm(e) {
     clearBookInput();
     myForm.style.display = "none";
-    //e.preventDefault();
+    e.preventDefault();
 }
 
 function sortBy(sBy) {

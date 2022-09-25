@@ -35,7 +35,7 @@ function clearVisitorInput() {
 function closeForm(e) {
     clearVisitorInput();
     myForm.style.display = "none";
-    //e.preventDefault();
+    e.preventDefault();
 }
 
 function loadTable(visitors) {

@@ -31,7 +31,7 @@ function loadBooks(stock) {
 }
 
 function addForm(e) {
-    clearVisitorInput();
+    clearCardInput();
     myForm.style.display = "block";
     formTitle.innerHTML = "Add Card"
     add.innerHTML = "Add";
@@ -55,16 +55,15 @@ function editForm(card) {
     loadTable(cards);
 }
 
-function clearVisitorInput() {
+function clearCardInput() {
     ID.value = "";
-    selectVisitor.value = "";
-    selectBook.value = '';
+    selectVisitor.innerHTML = '';
+    selectBook.innerHTML = '';
 }
 
-function closeForm(e) {
-    clearVisitorInput();
+function closeForm() {
+    clearCardInput();
     myForm.style.display = "none";
-    //e.preventDefault();
 }
 
 function loadTable(cards) {

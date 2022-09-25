@@ -87,6 +87,10 @@
     padding: 5px;
 }
 
+.inputs #selectVisitor option:hover {
+    border: 1px solid green;
+}
+
 .addBook button {
     width: 80%;
     height: auto;
@@ -105,11 +109,13 @@ thead tr th {
 
 tbody tr th {
     font-style: normal;
+    padding: 10px;
     border: 1px dashed yellowgreen;
 }
 
 tbody tr th button {
     border: 0;
+    padding: 0;
 }
 
 tbody tr th button u {
