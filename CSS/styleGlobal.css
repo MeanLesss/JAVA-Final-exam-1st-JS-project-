@@ -46,7 +46,7 @@ button {
 button:hover {
     background-color: grey;
     opacity: 0.7;
-    border-bottom: 3px solid green;
+    border-bottom: 5px solid green;
     box-shadow: 0px 0px 5px 3px greenyellow;
 }
 
