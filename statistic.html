@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/styleGlobal.css">
+    <link rel="stylesheet" href="css/statistic.css">
     <link rel="icon" href="logo.png">
     <title>Cards</title>
 </head>
@@ -29,8 +30,30 @@
                 </nav>
             </header>
         </section>
+        <hr/>
+
+        <section>
+            <div class="dispBanner">
+                <h1>Top 5 Books:</h1>
+                <div class="allBookBanner allBanner">
+                    <template data-book-template>
+                        <div class="banner"></div>
+                    </template>
+                </div>
+            </div>
+            <hr>
+            <div class="dispBanner">
+                <h1>Top 5 Visitors:</h1>
+                <div class="allVisitorBanner allBanner">
+                    <template data-visitor-template>
+                        <div class="banner"></div>
+                    </template>
+                </div>
+            </div>
+        </section>
+        <hr>
     </div>
-    <!-- <script type="module" src="JS/main.js"></script> -->
+    <script src="JS/statisticControl.js"></script>
 </body>
 
 </html>
