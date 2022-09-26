@@ -87,6 +87,7 @@
 table {
     /* border: 1px solid yellowgreen; */
     width: 100%;
+    box-shadow: 0px 3px 15px 0px greenyellow;
 }
 
 thead tr th {

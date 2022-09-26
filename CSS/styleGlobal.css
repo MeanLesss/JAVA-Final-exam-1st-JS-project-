@@ -6,6 +6,10 @@
     /* overflow: auto; ,*/
 }
 
+header {
+    box-shadow: 0px 3px 10px 5px yellowgreen;
+}
+
 input {
     color: white;
 }
@@ -24,15 +28,15 @@ body {
 h1 {
     padding: 20px;
     color: yellowgreen;
-    background-color: rgba(164, 210, 70, 0.3)
+    background-color: rgba(164, 210, 70, 0.3);
 }
 
 u h1 img {
-    filter: invert(99%) sepia(44%) saturate(2195%) hue-rotate(19deg) brightness(88%) contrast(86%);
+    /* filter: invert(99%) sepia(44%) saturate(2195%) hue-rotate(19deg) brightness(88%) contrast(86%); */
+    background-color: transparent;
+    background: none;
     border-radius: 50%;
-    box-shadow: 0px 0px 20px 1px hotpink;
-    width: 32px;
-    height: 32px;
+    margin: 0px 10px;
 }
 
 header nav {
