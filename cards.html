@@ -68,14 +68,16 @@
                 <label>Sort by: </label>
                 <select id="sort">
                 <option value="ID">ID</option>
-                <option value="Name">Name</option>
+                <option value="visitor">Visitor</option>
+                <option value="book">Book</option>
+                <option value="borrow">Borrow date</option>
                 </select>
                 <button class="addForm" onclick="sortBy(sort.value)"><i class="fa fa-sort"></i> Sort</button>
             </div>
             <div>
                 <label>Search: </label>
                 <input id="searchInput" type="search" placeholder="Search something">
-                <button class="addForm" onclick="searchVisitor(searchInput.value)"><i class="fa fa-search"></i></button>
+                <button class="addForm" onclick="searchCard(searchInput.value)"><i class="fa fa-search"></i></button>
                 <button class="addForm" id="refreshTable"><i class="fa fa-undo"></i></button>
             </div>
         </section>

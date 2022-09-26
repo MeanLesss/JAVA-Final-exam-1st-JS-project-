@@ -1,3 +1,4 @@
+//load all the values from the storage
 let visitors = [];
 let jVisitor = localStorage.getItem('visitors');
 if (jVisitor != null) visitors = JSON.parse(jVisitor);
@@ -10,6 +11,7 @@ let cards = [];
 let jCard = localStorage.getItem('cards');
 if (jCard != null) cards = JSON.parse(jCard);
 
+//load all visitor into the drow down 
 function loadVisitors(visitors) {
     let select = document.querySelector('#selectVisitor');
     for (let v of visitors) {
@@ -19,31 +21,44 @@ function loadVisitors(visitors) {
         select.appendChild(option);
     }
 }
-
+//load all book into the drow down 
 function loadBooks(stock) {
+    stock.sort((a, b) => {
+        return a.ID - b.ID;
+    })
     let select = document.querySelector('#selectBook');
     stock.forEach(s => {
-        let option = document.createElement('option');
-        option.innerHTML = `${s.ID}.${s.title}`
-        option.value = s.title;
-        select.appendChild(option);
+        if (s.copiesInLib > 0) {
+            let option = document.createElement('option');
+            option.innerHTML = `${s.ID}.${s.title}`
+            option.value = s.ID;
+            select.appendChild(option);
+        }
     })
 }
 
 function addForm(e) {
+    //open the form
     clearCardInput();
     myForm.style.display = "block";
     formTitle.innerHTML = "Add Card"
     add.innerHTML = "Add";
     ID.disabled = true;
+    //auto generate the ID
     if (cards == null) ID.value = 1;
     else ID.value = cards.length + 1;
+    //load everything to addForm drop down
     loadVisitors(visitors);
     loadBooks(stock);
     e.preventDefault();
 }
 
 function editForm(card) {
+    //update the book stock when add a card
+    let borrowBook = stock.find(b => b.ID === card.Book.ID);
+    updateStock(borrowBook, true);
+
+    //change the interface to display date
     let foundCard = cards.find(c => c.ID === card.ID);
     foundCard.returnDate = new Date().toLocaleDateString();
     console.log(foundCard);
@@ -81,7 +96,7 @@ function loadTable(cards) {
                         th.innerHTML = cards[i].Visitor;
                         break;
                     case 2:
-                        th.innerHTML = cards[i].Book;
+                        th.innerHTML = cards[i].Book.title;
                         break;
                     case 3:
                         th.innerHTML = cards[i].borrowDate;
@@ -109,18 +124,33 @@ function loadTable(cards) {
 
 }
 
+function updateStock(borrowBook, returnBook) {
+    //returnBook is boolean
+    if (!returnBook) borrowBook.copiesInLib = borrowBook.copiesInLib - 1;
+    else borrowBook.copiesInLib = borrowBook.copiesInLib + 1;
+
+    stock.splice(stock.indexOf(borrowBook), 1)
+    stock.push(borrowBook);
+    localStorage.setItem('stock', JSON.stringify(stock));
+    stock = JSON.parse(localStorage.getItem("stock"));
+}
+
 function addCard(e) {
     e.preventDefault();
     let card = new Card();
-    if (add.innerHTML === 'Add') {
-        card = new Card(
-            ID.value,
-            selectVisitor.value,
-            selectBook.value,
-            `${new Date().toLocaleDateString()}`,
-            null);
-        cards.push(card);
-    }
+    //update the book stock when add a card
+    let borrowBook = stock.find(b => b.ID === selectBook.value)
+    updateStock(borrowBook, false);
+
+    //update the card table 
+    card = new Card(
+        ID.value,
+        selectVisitor.value,
+        borrowBook,
+        `${new Date().toLocaleDateString()}`,
+        null);
+    cards.push(card);
+    //Save everything to the localStorage
     localStorage.setItem('cards', JSON.stringify(cards));
     cards = JSON.parse(localStorage.getItem("cards"));
     loadTable(cards);
@@ -135,26 +165,41 @@ function sortBy(sBy) {
                 return a.ID - b.ID;
             })
             break;
-        case 'name':
-            sortedArr.sort((a, b) => a.fullname.localeCompare(b.fullname));
+        case 'visitor':
+            sortedArr.sort((a, b) => a.Visitor.localeCompare(b.Visitor));
+            break;
+        case 'book':
+            sortedArr.sort((a, b) => a.Book.title.localeCompare(b.Book.title));
+            break;
+        case 'borrow':
+            sortedArr.sort((a, b) => a.borrowDate.localeCompare(b.borrowDate));
             break;
     }
     loadTable(sortedArr);
     console.log(sortedArr);
 }
 
-function searchVisitor(text) {
+function searchCard(text) {
     let foundArr = [];
-    visitors.forEach(visitor => {
-        if (visitor.ID.includes(text)) {
-            foundArr.push(visitor);
+    cards.forEach(card => {
+        if (card.ID.includes(text)) {
+            foundArr.push(card);
         }
-        if (visitor.fullname.toLowerCase().includes(text.toLowerCase())) {
-            foundArr.push(visitor);
+        if (card.Visitor.toLowerCase().includes(text.toLowerCase())) {
+            foundArr.push(card);
         }
-        if (visitor.phoneNumber.toLowerCase().includes(text.toLowerCase())) {
-            foundArr.push(visitor);
+        if (card.Book.title.toLowerCase().includes(text.toLowerCase())) {
+            foundArr.push(card);
         }
+        if (card.borrowDate.toLowerCase().includes(text.toLowerCase())) {
+            foundArr.push(card);
+        }
+        if (card.returnDate != null) {
+            if (card.returnDate.toLowerCase().includes(text.toLowerCase())) {
+                foundArr.push(card);
+            }
+        }
+
     });
     if (foundArr.length <= 0) {
         alert('Search not found!')
@@ -180,4 +225,6 @@ function clearStorage(e) {
     e.preventDefault();
     location.reload();
 }
+
+refreshTable.onclick = () => { loadTable(cards); }
 loadTable(cards);

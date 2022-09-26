@@ -46,7 +46,9 @@ function addForm(e) {
     myForm.style.display = "block";
     formTitle.innerHTML = "Add Book"
     add.innerHTML = "Add";
-    ID.disabled = false;
+    ID.disabled = true;
+    if (stock == null) ID.value = 1;
+    else ID.value = stock.length + 1;
     e.preventDefault();
 }
 
@@ -83,7 +85,7 @@ function loadTable(stock) {
                     case 7:
                         // button
                         let button = document.createElement('button');
-                        button.innerHTML = '<u>Edit</u>'
+                        button.innerHTML = '<i class="fa fa-pencil"></i> <u>Edit</u>'
                         button.addEventListener('click', () => {
                             editForm(MouseEvent, stock[i]);
                         })
@@ -99,12 +101,14 @@ function loadTable(stock) {
 
 }
 
-function editForm(e, book) {
+function editForm(e, book) { //this occur when edit the book because it reuse the form
+    //open the form 
     myForm.style.display = "block";
     formTitle.innerHTML = "Edit Book";
     add.innerHTML = "Edit"
     ID.disabled = true;
     // need to add the info into the inputs here
+    //pass in the values
     ID.value = book.ID;
     title.value = book.title;
     authorName.value = book.authorName;
@@ -112,10 +116,10 @@ function editForm(e, book) {
     publisher.value = book.publisher;
     noPage.value = book.noPages;
     copies.value = book.copiesInLib;
-    //e.preventDefault();
 }
 
 function clearBookInput() {
+    //reset all of the input values
     ID.value = "";
     title.value = "";
     authorName.value = "";
@@ -123,19 +127,13 @@ function clearBookInput() {
     publisher.value = "";
     noPage.value = "";
     copies.value = "";
-    // ID.innerHTML = "";
-    // title.innerHTML = "";
-    // authorName.innerHTML = "";
-    // pubDate.innerHTML = "";
-    // publisher.innerHTML = "";
-    // noPage.innerHTML = "";
-    // copies.innerHTML = "";
+
 }
 
 function closeForm(e) {
     clearBookInput();
     myForm.style.display = "none";
-    e.preventDefault();
+    // e.preventDefault();
 }
 
 function sortBy(sBy) {

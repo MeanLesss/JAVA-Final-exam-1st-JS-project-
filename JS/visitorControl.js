@@ -58,7 +58,7 @@ function loadTable(visitors) {
                     case 3:
                         // button
                         let button = document.createElement('button');
-                        button.innerHTML = '<u>Edit</u>'
+                        button.innerHTML = '<i class="fa fa-pencil"></i> <u>Edit</u>'
                         button.addEventListener('click', () => {
                             editForm(MouseEvent, visitors[i]);
                         })
